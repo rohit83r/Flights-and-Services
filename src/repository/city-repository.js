@@ -1,4 +1,4 @@
-const { City } = require("../models/city"); // Adjust the import according to your project structure
+const { City } = require('../models/city'); // Adjust according to your structure
 
 class CityRepository {
     async createCity(data) {
@@ -11,8 +11,26 @@ class CityRepository {
             const newCity = await City.create(data);
             return newCity;
         } catch (error) {
-            console.error('Error creating city in repository:');
-            throw error; // Re-throw the error to be caught in the calling function
+            console.error('Error creating city in repository:', error);
+            throw error;
+        }
+    }
+
+    async deleteCity(cityId) {
+        try {
+            const result = await City.destroy({
+                where: {
+                    id: cityId
+                }
+            });
+            if (result === 0) {
+                console.log('No city found with the provided ID');
+            } else {
+                console.log('City deleted successfully');
+            }
+        } catch (error) {
+            console.error('Error deleting city in repository:', error);
+            throw error;
         }
     }
 }

@@ -16,10 +16,9 @@ const setUpAndStartServer = async () => {
         console.log(`Server started at ${port}`);
         const repo = new CityRepository();
         try {
-            await repo.createCity({ name: "New Delhi" });
-            console.log('City created successfully');
+            await repo.deleteCity(1);
         } catch (error) {
-            console.error('Error creating city:', error);
+            console.error('Error deleting city:', error);
         }
     });
 };
