@@ -1,4 +1,4 @@
-const { City } = require('../models/city'); // Adjust according to your structure
+const { City } = require('../models/index'); // Adjust according to your structure
 
 class CityRepository {
     async createCity(data) {
