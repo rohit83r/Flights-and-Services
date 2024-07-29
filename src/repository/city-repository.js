@@ -27,12 +27,20 @@ class CityRepository {
 
     async updateCity(cityId,data) {
         try {
-            const city =await City.update(data,{
-                where:{
-                    id:cityId
-                }
-            })
-            return true;
+            //the below approach also works but will not return udpated object
+            // if u are using postgre then returning true can be used,else not
+            // const city =await City.update(data,{
+            //     where:{
+            //         id:cityId
+            //     },
+            //          returning: true
+            // })
+
+            //for getting updated data in mysql  we use the below approach
+            const city = await City.findByPk(cityId);
+            city.name = data.name;
+            await city.save();
+            return city;
         } catch (error) {
             console.log("something went wrong in the repository layer");
             throw {error};            
@@ -42,7 +50,7 @@ class CityRepository {
     
     async getCity(cityId) {
         try{
-            const city = await City.findOne({ where: { id:cityId } });
+            const city = await City.findByPk(cityId);
             return city;
                 
         }catch (error){
