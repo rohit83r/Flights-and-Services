@@ -55,4 +55,6 @@
      Relationship ->City has many airports and Airports belongs to a city (one to many)
 
 
-
+```
+npx sequelize model:generate --name Airport --attributes name:String,address:string,cityId:integer
+```
