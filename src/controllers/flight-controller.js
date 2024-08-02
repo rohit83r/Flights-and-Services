@@ -1,4 +1,5 @@
 const {FlightService} =require('../services/index');
+const {ClientErrors,SuccessCodes } = require("../utils/error-codes");
 
 const flightService = new FlightService();
 
@@ -16,7 +17,7 @@ const create = async (req,res) => {
             
         }
         const flight = await flightService.createFlight(flightRequestData);
-        return res.status(201).json({
+        return res.status(SuccessCodes.CREATED).json({
             data:flight,
             success:true,
             err:{},
