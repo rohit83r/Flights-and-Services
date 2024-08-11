@@ -23,7 +23,6 @@ The Flights and Services Management System is a robust Node.js microservice desi
 - [API Endpoints](#api-endpoints)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
